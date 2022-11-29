@@ -30,8 +30,7 @@ INSERT INTO Purchase(concert_id, section_id, price) VALUES
 	(1, '2019-07-01 08:06');
 
 INSERT INTO User(username) VALUES
-	(1, 1, '(-79.3871, 43.6426)', '2019-07-01 08:05');
-
+	("abc");
 
 INSERT INTO Purchase(purchase_id, username, ticket_id, datetime) VALUES	
 	(1, '2019-07-01 08:06');
