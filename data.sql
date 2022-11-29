@@ -27,7 +27,7 @@ INSERT INTO Section(section_id, section_name, venue_id) VALUES
     -- Insert sections for 'ScotiaBank Arena'
     (4, '100', 3),
     (5, '200', 3),
-    (6, '300', 3)
+    (6, '300', 3);
 
 
 INSERT INTO Seat(seat_id, seat_name, section_id, accessible) VALUES
@@ -115,8 +115,7 @@ INSERT INTO Seat(seat_id, seat_name, section_id, accessible) VALUES
     (73, '300', 'row 2, seat 2', false),
     (74, '300', 'row 2, seat 3', false),
     (75, '300', 'row 2, seat 4', false),
-    (76, '300', 'row 2, seat 5', false)
-    ;
+    (76, '300', 'row 2, seat 5', false);
 
 INSERT INTO Price(concert_id, section_id, price) VALUES
     -- for concert_id: 1, massey hall has 'floor' 'balcony'
