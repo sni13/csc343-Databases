@@ -10,8 +10,14 @@
 -- This constraint cannot be enforced without assertions or triggers. 
 
 -- Did Not:
+-- All possible constraints (without assertions/triggers) are implemented.
+
 -- Extra Constraints: 
+-- No extra constraints are implemented.
+
 -- Assumptions: 
+-- 1. Tickets are generated when purchased.
+-- 2. Seat organizations for venues do not change in different concerts. 
 
 
 ------ Schema Design------
@@ -45,7 +51,6 @@ CREATE TABLE Concert (
   venue_id integer NOT NULL REFERENCES Venue,
   datetime timestamp NOT NULL
 );
-
 
 -- A registered user has unique username.
 CREATE TABLE UserInfo (
