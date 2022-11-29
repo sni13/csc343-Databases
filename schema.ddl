@@ -19,12 +19,12 @@ drop schema if exists ticketchema cascade;
 create schema ticketchema; 
 set search_path to ticketchema;
 
--- A concert is booked into some venue at some time and date.
-CREATE TABLE Concert (
-  concert_id integer PRIMARY KEY,
+-- A registered owner has a name and an unique phone number.
+CREATE TABLE Owner (
+  owner_id integer PRIMARY KEY,
   name varchar(30) NOT NULL,
-  venue_id integer NOT NULL REFERENCES Venue,
-  datetime timestamp NOT NULL
+  phone varchar(20) NOT NULL,
+  unique(phone)
 );
 
 -- A venue is owned by some owner (person, organization, or company) 
@@ -35,16 +35,17 @@ CREATE TABLE Venue (
   name varchar(30) NOT NULL,
   city varchar(30) NOT NULL,
   street_address varchar(50) NOT NULL,
-  owner_id integer NOT NULL REFERENCES Owner,
+  owner_id integer NOT NULL REFERENCES Owner
 );
 
--- A registered owner has a name and an unique phone number.
-CREATE TABLE Owner (
-  owner_id integer PRIMARY KEY,
+-- A concert is booked into some venue at some time and date.
+CREATE TABLE Concert (
+  concert_id integer PRIMARY KEY,
   name varchar(30) NOT NULL,
-  phone varchar(20) NOT NULL,
-  unique(phone)
+  venue_id integer NOT NULL REFERENCES Venue,
+  datetime timestamp NOT NULL
 );
+
 
 -- A registered user has unique username.
 CREATE TABLE User (
