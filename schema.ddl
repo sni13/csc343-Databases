@@ -22,7 +22,7 @@ set search_path to ticketchema;
 -- A registered owner has a name and an unique phone number.
 CREATE TABLE Owner (
   owner_id integer PRIMARY KEY,
-  name varchar(30) NOT NULL,
+  name varchar(80) NOT NULL,
   phone varchar(20) NOT NULL,
   unique(phone)
 );
@@ -32,8 +32,8 @@ CREATE TABLE Owner (
 -- Each venue has a single owner.
 CREATE TABLE Venue (
   venue_id integer PRIMARY KEY,
-  name varchar(30) NOT NULL,
-  city varchar(30) NOT NULL,
+  name varchar(50) NOT NULL,
+  city varchar(15) NOT NULL,
   street_address varchar(50) NOT NULL,
   owner_id integer NOT NULL REFERENCES Owner
 );
@@ -41,14 +41,14 @@ CREATE TABLE Venue (
 -- A concert is booked into some venue at some time and date.
 CREATE TABLE Concert (
   concert_id integer PRIMARY KEY,
-  name varchar(30) NOT NULL,
+  name varchar(50) NOT NULL,
   venue_id integer NOT NULL REFERENCES Venue,
   datetime timestamp NOT NULL
 );
 
 
 -- A registered user has unique username.
-CREATE TABLE User (
+CREATE TABLE UserInfo (
   username varchar(30) PRIMARY KEY,
   surname varchar(25) NOT NULL,
   firstname varchar(15) NOT NULL
@@ -78,7 +78,7 @@ CREATE TABLE Seat (
 -- A ticket is assigned to a seat for an associated concert.
 CREATE TABLE Ticket (
   ticket_id integer PRIMARY KEY,
-  username varchar(30) NOT NULL REFERENCES User,
+  username varchar(30) NOT NULL REFERENCES UserInfo,
   concert_id integer NOT NULL REFERENCES Concert,
   seat_id integer NOT NULL REFERENCES Seat,  
   datetime timestamp NOT NULL
