@@ -48,7 +48,9 @@ CREATE TABLE Owner (
 
 -- A registered user has unique username.
 CREATE TABLE User (
-  username varchar(30) PRIMARY KEY
+  username varchar(30) PRIMARY KEY,
+  surname varchar(25) NOT NULL,
+  firstname varchar(15) NOT NULL
 );
 
 -- A section belongs to some venue in the system.
@@ -75,24 +77,16 @@ CREATE TABLE Seat (
 -- A ticket is assigned to a seat for an associated concert.
 CREATE TABLE Ticket (
   ticket_id integer PRIMARY KEY,
+  username varchar(30) NOT NULL REFERENCES User,
   concert_id integer NOT NULL REFERENCES Concert,
-  seat_id boolean NOT NULL REFERENCES Seat
+  seat_id integer NOT NULL REFERENCES Seat,  
+  datetime timestamp NOT NULL
 );
 
 -- A price is for a section in the venue that holds a concert.
 CREATE TABLE Price (
   concert_id integer NOT NULL REFERENCES Concert,
-  section_id boolean NOT NULL REFERENCES Section,
+  section_id integer NOT NULL REFERENCES Section,
   price real NOT NULL,
   PRIMARY KEY(concert_id, section_id)
-);
-
--- A purchase is when a user buys a ticket at some date and time.
--- Each ticket can only be purchased onece.
-CREATE TABLE Purchase (
-  order_id integer PRIMARY KEY,
-  username varchar(30) NOT NULL REFERENCES User,
-  ticket_id integerNOT NULL REFERENCES Ticket,
-  datetime timestamp NOT NULL,
-  UNIQUE(ticket_id)
 );
